@@ -17,7 +17,9 @@
       <div class="index-left-block latest-news">
         <h2>最新消息</h2>
         <ul>
-
+          <li v-for="item in newsList">
+            <a :href="item.url">{{ item.title }}</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -65,7 +67,21 @@ export default {
             }
           ]
         }
-      }
+      },
+      newsList: [
+        {
+          title: '数据统计',
+          url: 'https://coding.imooc.com'
+        },
+        {
+          title: '数据预测',
+          url: 'http://www.runoob.com'
+        },
+        {
+          title: '流量分析',
+          url: 'https://www.zhihu.com'
+        }
+      ]
     }
   }
 }
@@ -80,10 +96,16 @@ export default {
   .index-left{
     width: 20%;
   }
-  h3{
-    background-color: #42b983;
+  h2{
+    background-color: #1AE694;
+    color: #fff;
+    font-size: 18px;
     line-height: 36px;
     text-align: center;
+  }
+  h3{
+    text-align: center;
+    font-size: 16px;
   }
   .hr{
     border-bottom: 1px solid #ccc;
@@ -98,5 +120,11 @@ export default {
     font-weight: bold;
     background-color: red;
     color: white;
+  }
+  .index-left-block{
+    background-color: #FFFFFF;
+  }
+  .ndex-left-block latest-news{
+    background-color: #FFFFFF;
   }
 </style>

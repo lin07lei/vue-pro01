@@ -42,6 +42,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
+  background-color: #eee;
   color: #2c3e50;
 }
 
@@ -79,6 +80,7 @@ a {
 .app-header-inner img {
   width: 50px;
   margin-top: 20px;
+  /* float: left; */
 }
 .head-nav {
   margin-top: -120px;
