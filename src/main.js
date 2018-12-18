@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Layout from './components/layout'
 import VueRouter from 'vue-router'
 import IndexPage from './pages/index'
+import Mockdata from "./mock/index"
 
 Vue.use(VueRouter)
 
