@@ -86,4 +86,29 @@ Mock.mock(/getProductsList/, {
       ]
     }
   }
+}),
+
+Mock.mock(/getSlideImages/, {
+  'list': [
+      {
+        src: require('../assets/imgs/a.png'),
+        title: 'XXXXX1',
+        href: ''
+      },
+      {
+        src: require('../assets/imgs/b.png'),
+        title: 'XXXXX2',
+        href: ''
+      },
+      {
+        src: require('../assets/imgs/c.png'),
+        title: 'XXXXX3',
+        href: ''
+      },
+      {
+        src: require('../assets/imgs/d.png'),
+        title: 'XXXXX4',
+        href: ''
+      }
+  ]
 })

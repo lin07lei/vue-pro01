@@ -99,8 +99,9 @@ a {
   text-align: center;
   background-color: #EEEEEE;
   color: #b2b2b2;
-  height: 60px;
-  line-height: 60px;
+  height: 30px;
+  line-height: 30px;
   width: 100%;
+  bottom: 0;
 }
 </style>

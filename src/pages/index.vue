@@ -24,8 +24,10 @@
       </div>
     </div>
     <div class="index-right">
-      <div class="index-slice">
-
+      <div class="index-slide" v-if="imgArray.length !== 0">
+        <slide-show
+        :slides="imgArray">
+        </slide-show>
       </div>
       <div class="index-board-list">
         <div class="index-board-item" v-for="(item, index) in boardList" :class="{'last-line' : index % 2 === 0}">
@@ -45,14 +47,20 @@
 
 <script>
 import axios from 'axios'
+import slideShow from '../components/slideShow'
 export default {
+  components: {
+    slideShow
+  },
   data () {
     return {
-      productsList: '',
+      productsList: {},
       newsList: '',
-      boardList: ''
+      boardList: '',
+      imgArray: []
     }
   },
+
   mounted() {
     axios.post('api/getNewsList', {num: 5})
     .then((res) => {
@@ -79,6 +87,15 @@ export default {
     })
     .catch((err) => {
       console.log(err);
+    }),
+
+    axios.get('api/getSlideImages')
+    .then((res) => {
+      this.imgArray = res.data.list
+      console.log(this.imgArray);
+    })
+    .catch((err) => {
+      console.log(err)
     })
   },
   methods: {
@@ -100,6 +117,11 @@ export default {
   .index-right{
     width: 70%;
     margin-left: 60px;
+  }
+  .index-slide{
+    margin-top: 15px;
+    width: 89%;
+    height: 300px;
   }
   h2{
     background-color: #1AE694;
