@@ -120,7 +120,7 @@ export default {
   }
   .index-slide{
     margin-top: 15px;
-    width: 89%;
+    width: 91%;
     height: 300px;
   }
   h2{
@@ -178,6 +178,9 @@ export default {
     margin: 18px 20px 0px 10px;
     height: 120px;
     width: 150px;
+  }
+  .index-board-list{
+    margin-top: 28px;
   }
 
 </style>

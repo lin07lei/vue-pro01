@@ -5,7 +5,7 @@
         <img :src="slides[nowIndex].src">
       </a>
     </div>
-    <h3>{{slides[nowIndex.title]}}</h3>
+    <h3>{{ slides[nowIndex].title }}</h3>
     <ul class="slides-pages">
       <li>&lt;</li>
       <li v-for="(item, index) in slides" @click="goto(index)">
@@ -54,6 +54,10 @@ export default {
   transition: all .5s;
   transform: translatex(-900px);
 }
+.slide-images{
+  height: 100%;
+  width: 100%;
+}
 .slide-show{
   position: relative;
   width: 100%;
@@ -63,7 +67,17 @@ export default {
   opacity: .5;
   bottom: 0;
   text-align: left;
-  padding-left: 15px;
+  padding-bottom: 25px;
 }
-
+.slide-show img{
+  width: 100%;
+  height: 100%;
+}
+.slide-show h3{
+  margin-top: -1px;
+}
+.slides-pages{
+  margin-top: -40px;
+  text-align: right;
+}
 </style>
