@@ -26,7 +26,8 @@
     <div class="index-right">
       <div class="index-slide" v-if="imgArray.length !== 0">
         <slide-show
-        :slides="imgArray">
+        :slides="imgArray"
+        :inv="slideSpeed">
         </slide-show>
       </div>
       <div class="index-board-list">
@@ -57,7 +58,8 @@ export default {
       productsList: {},
       newsList: '',
       boardList: '',
-      imgArray: []
+      imgArray: [],
+      slideSpeed: 2000
     }
   },
 

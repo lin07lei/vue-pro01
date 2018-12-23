@@ -92,22 +92,22 @@ Mock.mock(/getSlideImages/, {
   'list': [
       {
         src: require('../assets/imgs/a.png'),
-        title: 'XXXXX1',
+        title: '邓伦欧巴',
         href: ''
       },
       {
         src: require('../assets/imgs/b.png'),
-        title: 'XXXXX2',
+        title: '刘雯欧尼',
         href: ''
       },
       {
         src: require('../assets/imgs/c.png'),
-        title: 'XXXXX3',
+        title: 'bueaty',
         href: ''
       },
       {
         src: require('../assets/imgs/d.png'),
-        title: 'XXXXX4',
+        title: '林三岁',
         href: ''
       }
   ]

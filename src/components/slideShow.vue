@@ -1,17 +1,22 @@
 <template>
-  <div class="slide-show">
+  <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
     <div class="slide-images">
       <a :href="slides[nowIndex].href">
-        <img :src="slides[nowIndex].src">
+        <transition name="slide-trans">
+          <img v-if="isShow" :src="slides[nowIndex].src">
+        </transition>
+        <transition name="slide-trans-old">
+          <img v-if="!isShow" :src="slides[nowIndex].src">
+        </transition>
       </a>
     </div>
     <h3>{{ slides[nowIndex].title }}</h3>
     <ul class="slides-pages">
-      <li>&lt;</li>
+      <li @click="goto(preIndex)">&lt;</li>
       <li v-for="(item, index) in slides" @click="goto(index)">
-        <a>{{index + 1}}</a>
+        <a :class="{on: index === nowIndex}">{{index + 1}}</a>
       </li>
-      <li>&gt;</li>
+      <li @click="goto(nextIndex)">&gt;</li>
     </ul>
 
   </div>
@@ -24,20 +29,55 @@ export default {
     slides: {
       type: Array,
       default:  () => []
+    },
+    inv: {
+      type: Number,
+      default: 1000
     }
   },
   data() {
     return {
-      nowIndex: 0
+      nowIndex: 0,
+      isShow: true
     }
   },
-
+  computed: {
+    preIndex() {
+      if(this.nowIndex === 0) {
+        return this.slides.length - 1;
+      }else {
+        return this.nowIndex - 1;
+      }
+    },
+    nextIndex() {
+      if(this.nowIndex === this.slides.length - 1) {
+        return 0;
+      }else {
+        return this.nowIndex + 1;
+      }
+    }
+  },
   mounted() {
-    console.log(this.slides)
+    this.runInv();
   },
   methods: {
+    // 幻灯片跳到哪一页
     goto(index) {
-      this.nowIndex = index;
+      this.isShow = false;
+      setTimeout(() => {
+        this.isShow = true;
+        this.nowIndex = index;
+      }, 10)
+    },
+    // 幻灯片自动切换
+    runInv() {
+      this.invId = setInterval(() => {
+        this.goto(this.nextIndex)
+      }, this.inv)
+    },
+    // 清除循环播放
+    clearInv() {
+      clearInterval(this.invId)
     }
   }
 }
@@ -79,5 +119,9 @@ export default {
 .slides-pages{
   margin-top: -40px;
   text-align: right;
+}
+.on{
+  text-decoration: underline;
+  font-weight: bold;
 }
 </style>
