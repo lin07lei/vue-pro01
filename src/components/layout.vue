@@ -5,11 +5,11 @@
         <img src="../assets/logo.png">
         <div class="head-nav">
           <ul class="nav-list">
-            <li>登陆</li>
+            <li @click="logClick">登陆</li>
             <li class="list-pile">|</li>
-            <li>注册</li>
+            <li @click="regClick">注册</li>
             <li class="list-pile">|</li>
-            <li>关于</li>
+            <li @click="aboutClick">关于</li>
           </ul>
         </div>
       </div>
@@ -22,15 +22,52 @@
     <div class="app-foot">
       <p>@author yanglei, muke first vue practice Demo! Started at 2018-12-1</p>
     </div>
+    <my-dialog
+    :is-show="isShowAbout"
+    @on-close="closeDialog(isShowAbout)">
+      <p>About</p>
+    </my-dialog>
+    <my-dialog
+    :is-show="isShowLog"
+    @on-close="closeDialog(isShowLog)">
+      <p>About</p>
+    </my-dialog>
+    <my-dialog
+    :is-show="isShowReg"
+    @on-close="closeDialog(isShowReg)">
+      <p>About</p>
+    </my-dialog>
   </div>
 </template>
 
 <script>
+import Dialog from './dialog'
 export default {
   name: 'layout',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      isShowAbout: false,
+      isShowLog: false,
+      isShowReg: false
+    }
+  },
+  components: {
+    myDialog: Dialog
+  },
+  methods: {
+    aboutClick() {
+      this.isShowAbout = true
+    },
+    logClick() {
+      this.isShowLog = true
+    },
+    regClick() {
+      this.isShowReg = true
+    },
+    closeDialog(attr) {
+      console.log(333);
+      this[attr] = false
     }
   }
 }

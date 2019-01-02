@@ -108,6 +108,7 @@ export default {
   bottom: 0;
   text-align: left;
   padding-bottom: 25px;
+  overflow: hidden;
 }
 .slide-show img{
   width: 100%;
