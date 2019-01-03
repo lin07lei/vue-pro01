@@ -24,24 +24,26 @@
     </div>
     <my-dialog
     :is-show="isShowAbout"
-    @on-close="closeDialog(isShowAbout)">
-      <p>About</p>
+    @on-close="closeDialog('isShowAbout')">
+      <p>这是我在跟着幕客网上的第一个vue工程训练，希望自己能有所进步哦</p>
     </my-dialog>
     <my-dialog
     :is-show="isShowLog"
-    @on-close="closeDialog(isShowLog)">
-      <p>About</p>
+    @on-close="closeDialog('isShowLog')">
+      <log-form @has-log="onSuccessLog"></log-form>
     </my-dialog>
     <my-dialog
     :is-show="isShowReg"
-    @on-close="closeDialog(isShowReg)">
-      <p>About</p>
+    @on-close="closeDialog('isShowReg')">
+      <reg-form></reg-form>
     </my-dialog>
   </div>
 </template>
 
 <script>
 import Dialog from './dialog'
+import LogForm from './logForm'
+import RegForm from './regForm'
 export default {
   name: 'layout',
   data () {
@@ -53,7 +55,9 @@ export default {
     }
   },
   components: {
-    myDialog: Dialog
+    myDialog: Dialog,
+    LogForm,
+    RegForm
   },
   methods: {
     aboutClick() {
@@ -66,8 +70,12 @@ export default {
       this.isShowReg = true
     },
     closeDialog(attr) {
-      console.log(333);
+
+      console.log(attr);
       this[attr] = false
+    },
+    onSuccessLog(data) {
+      this.name = data.name
     }
   }
 }
