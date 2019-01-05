@@ -5,9 +5,12 @@
         <img src="../assets/logo.png">
         <div class="head-nav">
           <ul class="nav-list">
-            <li @click="logClick">登陆</li>
-            <li class="list-pile">|</li>
-            <li @click="regClick">注册</li>
+            <li>{{ userName }}</li>
+            <li v-if="userName !== ''" class="nav-pile">|</li>
+            <li v-if="userName !== ''" @click="logOut">退出</li>
+            <li v-if="userName === ''" @click="logClick">登陆</li>
+            <li v-if="userName === ''" class="list-pile">|</li>
+            <li v-if="userName === ''" @click="regClick">注册</li>
             <li class="list-pile">|</li>
             <li @click="aboutClick">关于</li>
           </ul>
@@ -48,6 +51,7 @@ export default {
   name: 'layout',
   data () {
     return {
+      userName: '',
       msg: 'Welcome to Your Vue.js App',
       isShowAbout: false,
       isShowLog: false,
@@ -70,12 +74,15 @@ export default {
       this.isShowReg = true
     },
     closeDialog(attr) {
-
-      console.log(attr);
       this[attr] = false
     },
     onSuccessLog(data) {
-      this.name = data.name
+      console.log('登陆账户：'+ data);
+      this.closeDialog('isShowLog')
+      this.userName = data.name
+    },
+    logOut() {
+
     }
   }
 }
@@ -132,9 +139,10 @@ a {
 }
 .head-nav ul {
   overflow: hidden;
+  float: right
 }
 .head-nav li {
-  float: right;
+  float: left;
   cursor: pointer;
 }
 .nav-pile {

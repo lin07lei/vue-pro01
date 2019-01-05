@@ -19,7 +19,7 @@
       </div>
       <div class="g-form-line">
         <div class="g-form-btn">
-          <a class="button" @click="onLogin">登录</a>
+          <a class="button" @click="onLogin">登 录</a>
         </div>
       </div>
       <p>{{ errorText }}</p>
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -83,7 +84,7 @@ export default {
       }
       else {
         this.errorText = ''
-        this.$http.get('api/login')
+        axios.get('api/login')
         .then((res) => {
           this.$emit('has-log', res.data)
         }, (error) => {
@@ -97,5 +98,24 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.g-form{
+  line-height: 50px;
+}
+.g-form-input{
+  float: right;
+  width: 80%;
+}
+input{
+  line-height: 30px;
+  width: 98%;
+}
+.g-form-btn{
+  height: 28px;
+  background: #1AE694;
+  text-align: center;
+  padding-bottom: 15px;
+}
+a {
+  color: #fff;
+}
 </style>

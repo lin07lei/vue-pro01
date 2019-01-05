@@ -4,10 +4,12 @@
       <div class="dialog-cover" v-if="isShow" @click="closeMyself">
 
       </div>
-      <div class="dialog-content" v-if="isShow">
-        <p class="dialog-close" @click="closeMyself">X</p>
-        <slot>empty</slot>
-      </div>
+      <transition name="drop">
+        <div class="dialog-content" v-if="isShow">
+          <p class="dialog-close" @click="closeMyself">X</p>
+          <slot>empty</slot>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -63,12 +65,12 @@ export default {
   height: 100%;
 }
 .dialog-content {
-  width: 50%;
+  width: 30%;
   position: fixed;
   overflow: auto;
   background: #fff;
-  top: 20%;
-  left: 50%;
+  top: 25%;
+  left: 60%;
   margin-left: -25%;
   z-index: 10;
   border-radius: 10px;

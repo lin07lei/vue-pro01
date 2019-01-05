@@ -111,4 +111,9 @@ Mock.mock(/getSlideImages/, {
         href: ''
       }
   ]
+}),
+
+Mock.mock(/login/, {
+  name: 'yanglei',
+  userId: '123456'
 })

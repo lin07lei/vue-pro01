@@ -109,7 +109,7 @@ export default {
 <style scoped>
   .index-wrap{
     height: 580px;
-    width: auto;
+    width: 100%;
     padding: 0 40px;
     display: flex;
   }
