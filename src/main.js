@@ -24,22 +24,22 @@ let router = new VueRouter({
       redirect: '/detail/analysis',
       children: [
         {
-          path: 'analysis',
+          path: '/analysis',
           name: 'analysis',
           component: DetailAnaPage
         },
         {
-          path: 'count',
+          path: '/count',
           name: 'count',
           component: DetailCouPage
         },
         {
-          path: 'forecast',
+          path: '/forecast',
           name: 'forecast',
           component: DetailForPage
         },
         {
-          path: 'publish',
+          path: '/publish',
           name: 'publish',
           component: DetailPubPage
         }
