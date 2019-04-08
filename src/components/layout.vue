@@ -20,9 +20,7 @@
       </div>
     </div>
     <div class="app-content">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <index></index>
     </div>
     <div class="app-foot">
       <p>@author yanglei, muke first vue practice Demo! Started at 2018-12-1</p>
@@ -49,6 +47,7 @@
 import Dialog from './dialog'
 import LogForm from './logForm'
 import RegForm from './regForm'
+import Index from '../pages/index'
 export default {
   name: 'layout',
   data () {
@@ -63,7 +62,8 @@ export default {
   components: {
     myDialog: Dialog,
     LogForm,
-    RegForm
+    RegForm,
+    Index
   },
   methods: {
     aboutClick() {
