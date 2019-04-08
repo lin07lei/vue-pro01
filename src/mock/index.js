@@ -4,15 +4,15 @@ Mock.mock(/getNewsList/, {
   'list': [
       {
         title: '数据统计',
-        url: 'https://coding.imooc.com'
+        path: 'detail/count'
       },
       {
         title: '数据预测',
-        url: 'http://www.runoob.com'
+        path: 'detail/forecast'
       },
       {
         title: '流量分析',
-        url: 'https://www.zhihu.com'
+        path: 'detail/analysis'
       }
   ]
 }),
