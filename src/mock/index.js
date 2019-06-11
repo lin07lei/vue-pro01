@@ -1,119 +1,25 @@
 import Mock from 'mockjs'
 
-Mock.mock(/getNewsList/, {
-  'list': [
-      {
-        title: '数据统计',
-        path: 'detail/count'
-      },
-      {
-        title: '数据预测',
-        path: 'detail/forecast'
-      },
-      {
-        title: '流量分析',
-        path: 'detail/analysis'
-      }
-  ]
-}),
+import { menuList } from './mock.menulist.js'
+import { boardList } from './mock.boardlist.js'
+import { slideImgs } from './mock.slideShow.js'
 
-Mock.mock(/getBoardList/, {
-  'list': [
-      {
-        title: '产品第一',
-        description: '这是一段很长的简单介绍产品的描述文字blablabla……',
-        id: 'one',
-        img: require('../assets/imgs/one.png'),
-        url: 'https://coding.imooc.com'
-      },
-      {
-        title: '产品第二',
-        description: '这是一段很长的简单介绍产品的描述文字blablabla……',
-        id: 'two',
-        img: require('../assets/imgs/two.png'),
-        url: 'http://www.runoob.com'
-      },
-      {
-        title: '产品第三',
-        description: '这是一段很长的简单介绍产品的描述文字blablabla……',
-        id: 'three',
-        img: require('../assets/imgs/three.png'),
-        url: 'https://www.zhihu.com'
-      },
-      {
-        title: '产品第四',
-        description: '这是一段很长的简单介绍产品的描述文字blablabla……',
-        id: 'four',
-        img: require('../assets/imgs/four.png'),
-        url: 'https://www.baidu.com'
-      }
-  ]
-}),
-
-Mock.mock(/getProductsList/, {
-  'list': {
-    pc: {
-      title: '学习兴趣',
-      list: [
-        {
-          name: 'web前端',
-          url: 'https://coding.imooc.com',
-          hot: true
-        },
-        {
-          name: '后端学习',
-          url: 'http://www.runoob.com'
-        },
-        {
-          name: '知乎论坛',
-          url: 'https://www.zhihu.com'
-        }
-      ]
-    },
-    app: {
-      title: '游玩类目',
-      last: true,
-      list: [
-        {
-          name: '马蜂窝',
-          url: 'http://www.mafengwo.cn',
-          hot: true
-        },
-        {
-          name: 'youtube',
-          url: 'https://www.youtube.com'
-        }
-      ]
+let mocks = [];
+function addToMock(list) {
+  list.forEach(n => {
+    if(n.method) {
+      mocks.push(n)
     }
-  }
-}),
+  })
+}
 
-Mock.mock(/getSlideImages/, {
-  'list': [
-      {
-        src: require('../assets/imgs/a.png'),
-        title: '邓伦欧巴',
-        href: 'detail/publish'
-      },
-      {
-        src: require('../assets/imgs/b.png'),
-        title: '刘雯欧尼',
-        href: 'detail/analysis'
-      },
-      {
-        src: require('../assets/imgs/c.png'),
-        title: 'bueaty',
-        href: 'detail/count'
-      },
-      {
-        src: require('../assets/imgs/d.png'),
-        title: '林三岁',
-        href: 'detail/forecast'
-      }
-  ]
-}),
+addToMock(menuList);
+addToMock(boardList);
+addToMock(slideImgs);
 
-Mock.mock(/login/, {
-  name: 'yanglei',
-  userId: '123456'
-})
+if(mocks.length !== 0) {
+  mocks.forEach(n => {
+    //格式： Mock.mock( url, post/get , 返回的数据)；
+    Mock.mock(n.method, 'post', n.data)
+  })
+}

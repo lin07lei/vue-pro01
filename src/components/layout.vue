@@ -20,44 +20,38 @@
       </div>
     </div>
     <div class="app-content">
-      <index></index>
+      <router-view></router-view>
     </div>
     <div class="app-foot">
       <p>@author yanglei, muke first vue practice Demo! Started at 2018-12-1</p>
     </div>
-    <my-dialog
-    :is-show="isShowAbout"
-    @on-close="closeDialog('isShowAbout')">
+    <my-dialog :is-show="isShowAbout" @on-close="closeDialog('isShowAbout')">
       <p>这是我在跟着幕客网上的第一个vue工程训练，希望自己能有所进步哦</p>
     </my-dialog>
-    <my-dialog
-    :is-show="isShowLog"
-    @on-close="closeDialog('isShowLog')">
+    <my-dialog :is-show="isShowLog" @on-close="closeDialog('isShowLog')">
       <log-form @has-log="onSuccessLog"></log-form>
     </my-dialog>
-    <my-dialog
-    :is-show="isShowReg"
-    @on-close="closeDialog('isShowReg')">
+    <my-dialog :is-show="isShowReg" @on-close="closeDialog('isShowReg')">
       <reg-form></reg-form>
     </my-dialog>
   </div>
 </template>
 
 <script>
-import Dialog from './dialog'
-import LogForm from './logForm'
-import RegForm from './regForm'
-import Index from '../pages/index'
+import Dialog from "./dialog";
+import LogForm from "./logForm";
+import RegForm from "./regForm";
+import Index from "../pages/index";
 export default {
-  name: 'layout',
-  data () {
+  name: "layout",
+  data() {
     return {
-      userName: '',
-      msg: 'Welcome to Your Vue.js App',
+      userName: "",
+      msg: "Welcome to Your Vue.js App",
       isShowAbout: false,
       isShowLog: false,
       isShowReg: false
-    }
+    };
   },
   components: {
     myDialog: Dialog,
@@ -67,32 +61,30 @@ export default {
   },
   methods: {
     aboutClick() {
-      this.isShowAbout = true
+      this.isShowAbout = true;
     },
     logClick() {
-      this.isShowLog = true
+      this.isShowLog = true;
     },
     regClick() {
-      this.isShowReg = true
+      this.isShowReg = true;
     },
     closeDialog(attr) {
-      this[attr] = false
+      this[attr] = false;
     },
     onSuccessLog(data) {
-      console.log('登陆账户：'+ data);
-      this.closeDialog('isShowLog')
-      this.userName = data.name
+      console.log("登陆账户：" + data);
+      this.closeDialog("isShowLog");
+      this.userName = data.name;
     },
-    logOut() {
-
-    }
+    logOut() {}
   }
-}
+};
 </script>
 
 <style>
 body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
@@ -100,7 +92,8 @@ body {
   color: #2c3e50;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -141,7 +134,7 @@ a {
 }
 .head-nav ul {
   overflow: hidden;
-  float: right
+  float: right;
 }
 .head-nav li {
   float: left;
@@ -152,7 +145,7 @@ a {
 }
 .app-foot {
   text-align: center;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   color: #b2b2b2;
   height: 30px;
   line-height: 30px;

@@ -1,22 +1,16 @@
 <template>
-  <div class="detail-wrap">
-    analysis
-  </div>
+  <div class="detail-wrap">analysis</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-
-    }
+  name: "analysis",
+  data() {
+    return {};
   },
-  computed: {
-
-  }
-}
+  computed: {}
+};
 </script>
 
 <style scoped>
-
 </style>

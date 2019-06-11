@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import router from './router'
 import Layout from './components/layout'
-// import Mockdata from "./mock/index"
+import "./mock"
 
 new Vue({
   el: '#app',

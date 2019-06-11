@@ -1,16 +1,16 @@
 // js配置路由：定义路由
 
 // 引入组件
-import IndexPage from '../pages/index.vue'
-import DetailPage from '../pages/detail'
-import DetailAnaPage from '../pages/detail/analysis'
-import DetailCouPage from '../pages/detail/count'
-import DetailForPage from '../pages/detail/forecast'
-import DetailPubPage from '../pages/detail/publish'
+import IndexPage from "../pages/index.vue";
+import DetailPage from "../pages/detail.vue";
+import DetailAnaPage from "../pages/detail/analysis";
+import DetailCouPage from "../pages/detail/count";
+import DetailForPage from "../pages/detail/forecast";
+import DetailPubPage from "../pages/detail/publish";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: IndexPage
   },
   {
@@ -24,22 +24,22 @@ const routes = [
         component: DetailAnaPage
       },
       {
-        path: '/count',
+        path: 'count',
         name: 'count',
         component: DetailCouPage
       },
       {
-        path: '/forecast',
+        path: 'forecast',
         name: 'forecast',
         component: DetailForPage
       },
       {
-        path: '/publish',
+        path: 'publish',
         name: 'publish',
         component: DetailPubPage
       }
     ]
   }
-]
+];
 
-export default routes
+export default routes;
