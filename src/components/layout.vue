@@ -152,4 +152,8 @@ a {
   width: 100%;
   bottom: 0;
 }
+.app-content {
+  max-width: 1080px;
+  margin: auto;
+}
 </style>

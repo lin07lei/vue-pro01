@@ -1,6 +1,6 @@
 <template>
-  <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
-    <div class="slide-images">
+  <div @mouseover="clearInv" @mouseout="runInv">
+    <div class="slide-show">
       <a :href="slides[nowIndex].href">
         <transition name="slide-trans">
           <img v-if="isShow" :src="slides[nowIndex].src">
@@ -10,25 +10,26 @@
         </transition>
       </a>
     </div>
-    <h3>{{ slides[nowIndex].title }}</h3>
-    <ul class="slides-pages">
-      <li @click="goto(preIndex)">&lt;</li>
-      <li v-for="(item, index) in slides" @click="goto(index)">
-        <a :class="{on: index === nowIndex}">{{index + 1}}</a>
-      </li>
-      <li @click="goto(nextIndex)">&gt;</li>
-    </ul>
-
+    <div class="slide-bottom">
+      <h3>{{ slides[nowIndex].title }}</h3>
+      <ul class="slides-pages">
+        <li @click="goto(preIndex)">&lt;</li>
+        <li v-for="(item, index) in slides" @click="goto(index)">
+          <a :class="{on: index === nowIndex}">{{index + 1}}</a>
+        </li>
+        <li @click="goto(nextIndex)">&gt;</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'slideShow',
+  name: "slideShow",
   props: {
     slides: {
       type: Array,
-      default:  () => []
+      default: () => []
     },
     inv: {
       type: Number,
@@ -39,20 +40,20 @@ export default {
     return {
       nowIndex: 0,
       isShow: true
-    }
+    };
   },
   computed: {
     preIndex() {
-      if(this.nowIndex === 0) {
+      if (this.nowIndex === 0) {
         return this.slides.length - 1;
-      }else {
+      } else {
         return this.nowIndex - 1;
       }
     },
     nextIndex() {
-      if(this.nowIndex === this.slides.length - 1) {
+      if (this.nowIndex === this.slides.length - 1) {
         return 0;
-      }else {
+      } else {
         return this.nowIndex + 1;
       }
     }
@@ -67,61 +68,71 @@ export default {
       setTimeout(() => {
         this.isShow = true;
         this.nowIndex = index;
-      }, 10)
+      }, 10);
     },
     // 幻灯片自动切换
     runInv() {
       this.invId = setInterval(() => {
-        this.goto(this.nextIndex)
-      }, this.inv)
+        this.goto(this.nextIndex);
+      }, this.inv);
     },
     // 清除循环播放
     clearInv() {
-      clearInterval(this.invId)
+      clearInterval(this.invId);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-.slide-trans-enter-active{
-  transition: all .5s;
+.slide-trans-enter-active {
+  transition: all 0.5s;
 }
-.slide-trans-enter{
+.slide-trans-enter {
   transform: translatex(900px);
 }
-.slide-trans-old-leave-active{
-  transition: all .5s;
+.slide-trans-old-leave-active {
+  transition: all 0.5s;
   transform: translatex(-900px);
 }
-.slide-images{
-  height: 100%;
-  width: 100%;
-}
-.slide-show{
+.slide-show {
+  margin-top: 15px;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 320px;
   color: #fff;
   background: #000;
-  opacity: .5;
+  opacity: 0.5;
   bottom: 0;
   text-align: left;
-  padding-bottom: 25px;
   overflow: hidden;
 }
-.slide-show img{
+.slide-show img {
   width: 100%;
   height: 100%;
 }
-.slide-show h3{
-  margin-top: -1px;
+.slide-bottom {
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+  background: #000;
+  opacity: 0.5;
 }
-.slides-pages{
-  margin-top: -40px;
-  text-align: right;
+.slide-bottom h3 {
+  display: block;
+  line-height: 16px;
+  margin-top: 4px;
+  padding-left: 8px;
+  margin-bottom: 4px;
 }
-.on{
+
+.slides-pages {
+  margin-right: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.on {
   text-decoration: underline;
   font-weight: bold;
 }

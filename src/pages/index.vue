@@ -28,20 +28,20 @@
         <slide-show :slides="imgArray" :inv="slideSpeed"></slide-show>
       </div>
       <div class="index-board-list">
-        <div
-          class="index-board-item"
-          v-for="(item, index) in boardList"
-          :class="{'last-line' : index % 2 === 0}"
-        >
-          <img :src="item.img">
-          <div class="index-board-item-inner">
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.description }}</p>
-            <div class="index-board-button">
-              <a :href="item.url" class="button">立即购买</a>
+        <el-row :gutter="12">
+          <el-col :md="12" v-for="(item, index) in boardList">
+            <div class="index-board-item">
+              <img :src="item.img">
+              <div class="index-board-item-inner">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.description }}</p>
+                <div class="index-board-button">
+                  <a :href="item.url" class="button">立即购买</a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -110,22 +110,15 @@ export default {
 
 <style scoped>
 .index-wrap {
-  height: 580px;
+  /* height: 580px; */
   width: 100%;
-  padding: 0 40px;
   display: flex;
 }
 .index-left {
-  width: 20%;
+  width: 40%;
 }
 .index-right {
-  width: 70%;
-  margin-left: 60px;
-}
-.index-slide {
-  margin-top: 15px;
-  width: 91%;
-  height: 300px;
+  margin-left: 20px;
 }
 h2 {
   background-color: #1ae694;
@@ -163,15 +156,11 @@ a {
   } */
 .index-board-item {
   display: flex;
-  width: 400px;
   background-color: #fff;
   padding: 0px 10px 10px 10px;
-  margin: 15px auto;
+  margin: 8px auto;
   float: left;
   line-height: 17px;
-}
-.last-line {
-  margin-right: 15px;
 }
 .button {
   padding: 5px 10px;
@@ -185,6 +174,6 @@ a {
 }
 .index-board-list {
   overflow: hidden;
-  margin-top: 28px;
+  margin-top: 8px;
 }
 </style>
